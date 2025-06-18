@@ -33,16 +33,16 @@
     const tg = window.Telegram.WebApp;
     tg.expand();
 
-    const code = window.location.hash.substring(1); // e.g. TVRJek5qYzE=
+    const code = window.location.hash.substring(1); // e.g. 14979
     const iframe = document.getElementById("videoFrame");
     const error = document.getElementById("error");
 
     if (code) {
-      iframe.src = `https://embed.aidrama.me/video/${code}`;
+      iframe.src = `https://asianload.cfd/watch?v=${code}`;
     } else {
       iframe.style.display = "none";
       error.style.display = "block";
-      error.innerText = "❌ No video code provided in the URL.";
+      error.innerText = "❌ No video ID provided in the URL.";
     }
   </script>
 </body>
