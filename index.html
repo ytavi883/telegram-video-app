@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Watch Video</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    #error {
+      color: red;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎬 Loading Video...</h2>
+  <video id="player" controls autoplay playsinline style="width: 90%; max-width: 800px; margin-top: 20px;">
+    <source id="videoSource" src="" type="text/html">
+  </video>
+  <div id="error"></div>
+
+  <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    const hash = window.location.hash.substring(1); // Get code after #
+    const baseURL = "https://jekari.xyz/#";
+
+    if (hash) {
+      const fullURL = baseURL + hash;
+      document.getElementById("videoSource").src = fullURL;
+      const player = new Plyr('#player');
+      document.querySelector("h2").innerText = "🎥 Now Playing: " + hash;
+    } else {
+      document.getElementById("error").innerText = "❌ No video code found in URL.";
+    }
+  </script>
+</body>
+</html>
